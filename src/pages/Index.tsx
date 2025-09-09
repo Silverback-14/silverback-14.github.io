@@ -4,9 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
 import TechMarquee from '@/components/TechMarquee';
 import ProjectsSection from '@/components/ProjectsSection';
-import EducationTimeline from '@/components/EducationTimeline';
-import CompetitiveStats from '@/components/CompetitiveStats';
-import BlogSection from '@/components/BlogSection';
+import EducationCard from '@/components/EducationCard';
+import ExperienceSection from '@/components/ExperienceSection';
 import ContactSection from '@/components/ContactSection';
 
 const Index: React.FC = () => {
@@ -16,7 +15,7 @@ const Index: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="bg-dark min-h-screen relative"
+        className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen relative"
       >
         {/* Enhanced premium light source effects */}
         <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -54,39 +53,39 @@ const Index: React.FC = () => {
           }}></div>
           
           {/* Floating glow orbs */}
-          <div className="absolute w-[100px] h-[100px] rounded-full bg-white/5 blur-xl animate-float" style={{ 
+          <div className="absolute w-[100px] h-[100px] rounded-full bg-blue-200/30 blur-xl animate-float" style={{ 
             top: '20vh', 
             left: '30vw',
             animationDelay: '0s'
           }}></div>
           
-          <div className="absolute w-[80px] h-[80px] rounded-full bg-white/5 blur-xl animate-float" style={{ 
+          <div className="absolute w-[80px] h-[80px] rounded-full bg-indigo-200/30 blur-xl animate-float" style={{ 
             top: '60vh', 
             right: '25vw',
             animationDelay: '1.5s'
           }}></div>
         </div>
         
-        <header className="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
+        <header className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 className="text-xl font-bold italic">John Doe</h1>
+            <h1 className="text-xl font-bold italic">Ananth</h1>
             <nav className="hidden md:block">
               <ul className="flex space-x-8">
                 <li>
-                  <a href="#projects" className="hover:text-white transition-colors relative group">
+                  <a href="#projects" className="hover:text-blue-600 transition-colors relative group text-slate-700">
                     Projects
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white/30 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-white transition-colors relative group">
+                  <a href="#contact" className="hover:text-blue-600 transition-colors relative group text-slate-700">
                     Contact
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white/30 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
                   </a>
                 </li>
                 <li>
                   <a 
-                    href="/resume.pdf" 
+                    href="https://drive.google.com/file/d/12sN7Fdeu6_YOY-BFxSTvaguX17myt0JU/view?usp=sharing" 
                     className="cta-button-premium text-sm px-4 py-1"
                   >
                     Resume
@@ -101,16 +100,15 @@ const Index: React.FC = () => {
           <HeroSection />
           <TechMarquee />
           <ProjectsSection />
-          <EducationTimeline />
-          <CompetitiveStats />
-          <BlogSection />
+          <EducationCard />
+          <ExperienceSection />
           <ContactSection />
         </main>
         
-        <footer className="py-12 px-4 border-t border-white/10 relative z-10">
+        <footer className="py-12 px-4 border-t border-slate-200/50 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
-            <p className="text-white/60">
-              © {new Date().getFullYear()} John Doe. All rights reserved.
+            <p className="text-slate-600">
+              © {new Date().getFullYear()} Ananth. All rights reserved.
             </p>
           </div>
         </footer>

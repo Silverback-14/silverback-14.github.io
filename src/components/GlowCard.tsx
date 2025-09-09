@@ -17,19 +17,19 @@ const GlowCard: React.FC<GlowCardProps> = ({
   delayIndex = 0,
   intensity = 'medium'
 }) => {
-  // Define glow intensity levels
+  // Define glow intensity levels for light theme
   const glowIntensity = {
     low: {
-      initial: "0 0 10px rgba(255, 255, 255, 0.12), 0 0 20px rgba(255, 255, 255, 0.08)",
-      hover: "0 0 25px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 255, 255, 0.15)"
+      initial: "0 2px 8px rgba(59, 130, 246, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.05)",
+      hover: "0 4px 16px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1)"
     },
     medium: {
-      initial: "0 0 15px rgba(255, 255, 255, 0.15), 0 0 25px rgba(255, 255, 255, 0.1)",
-      hover: "0 0 35px rgba(255, 255, 255, 0.25), 0 0 60px rgba(255, 255, 255, 0.15)"
+      initial: "0 4px 12px rgba(59, 130, 246, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.08)",
+      hover: "0 8px 24px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.15)"
     },
     high: {
-      initial: "0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.12)",
-      hover: "0 0 45px rgba(255, 255, 255, 0.3), 0 0 70px rgba(255, 255, 255, 0.2)"
+      initial: "0 6px 16px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1)",
+      hover: "0 12px 32px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.2)"
     }
   };
 
@@ -47,17 +47,17 @@ const GlowCard: React.FC<GlowCardProps> = ({
       whileHover={{ 
         scale: hoverScale,
         boxShadow: glowIntensity[intensity].hover,
-        borderColor: "rgba(255, 255, 255, 0.4)",
+        borderColor: "rgba(59, 130, 246, 0.3)",
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
       style={{
         boxShadow: glowIntensity[intensity].initial
       }}
     >
-      <div className="relative z-10 h-full backdrop-blur-sm">
+      <div className="relative z-10 h-full">
         {children}
       </div>
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-white/10 to-transparent transition-opacity duration-300 pointer-events-none"></div>
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
     </motion.div>
   );
 };

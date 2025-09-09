@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GlowCard from './GlowCard';
-import { ArrowRight } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -16,47 +15,34 @@ const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Project 1",
-      description: "xyz",
-      techStack: ["React", "Node.js", "Express"],
+      title: "Predicting Magnetic Properties of Mn and Cr Solids",
+      description: "Collected 200+ crystal structures and trained a Graph Attention Network (GAT) to predict magnetic properties with high accuracy (MAE 1.29).",
+      techStack: ["Graph Neural Networks", "Python", "PyTorch", "Data Processing"],
       url: "#"
     },
     {
       id: 2,
-      title: "Project 2",
-      description: "abc",
-      techStack: ["Vue.js", "Django", "MongoDB"],
+      title: "MERN Blogging Platform",
+      description: "Created a full-stack blogging platform using the MERN stack. Enabled JWT authentication for secure sign-up/sign-in, allowing users to create, edit, and manage 100+ blog posts with real-time updates.",
+      techStack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "REST APIs"],
       url: "#"
     },
     {
       id: 3,
-      title: "Project 3",
-      description: "123",
-      techStack: ["Angular", "Flask", "PostgreSQL"],
+      title: "AI-Powered Slack Chatbot",
+      description: "Programmed a Slack chatbot that listens for mentions, retrieves the last 5 messages for context, and generates responses using Google Gemini API. Integrated real-time event handling via Slack Socket Mode and optimized message processing with an in-memory conversation store.",
+      techStack: ["Python", "Slack API", "Google Gemini API", "Socket Mode", "Bolt for Python"],
       url: "#"
     },
     {
       id: 4,
-      title: "Project 4",
-      description: "456",
-      techStack: ["Svelte", "Ruby on Rails", "MySQL"],
-      url: "#"
-    },
-    {
-      id: 5,
-      title: "Project 5",
-      description: "789",
-      techStack: ["Next.js", "Spring Boot", "SQLite"],
-      url: "#"     
-    },
-    {
-      id : 6,
-      title: "Project 6",
-      description: "101",
-      techStack: ["Golang", "ASP.NET", "Firebase"],
+      title: "Restaurant Website",
+      description: "Built a restaurant website with a reservation system handling 100+ reservations efficiently. Applied Django views, routes, and templates for organized website structure and modeled 12 database tables to enhance user interactions.",
+      techStack: ["Django", "MySQL", "HTML", "CSS"],
       url: "#"
     }
   ];
+
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -108,31 +94,23 @@ const ProjectsSection: React.FC = () => {
               >
                 <div className="p-6 h-full flex flex-col relative z-10">
                   {/* Premium highlight effect on hover */}
-                  <div className="absolute -inset-x-4 -inset-y-4 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 -z-10 blur-2xl transition-opacity"></div>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br from-white via-white/20 to-transparent transition-all duration-500"></div>
+                  <div className="absolute -inset-x-4 -inset-y-4 bg-blue-50/50 rounded-xl opacity-0 group-hover:opacity-100 -z-10 blur-2xl transition-opacity"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br from-blue-50 via-blue-100/20 to-transparent transition-all duration-500"></div>
                   
-                  <h3 className="text-2xl font-bold italic mb-3 group-hover:text-white transition-colors">{project.title}</h3>
-                  <p className="text-white/70 mb-6 group-hover:text-white/90 transition-colors">{project.description}</p>
+                  <h3 className="text-2xl font-bold italic mb-3 group-hover:text-slate-900 transition-colors">{project.title}</h3>
+                  <p className="text-slate-600 mb-6 group-hover:text-slate-800 transition-colors">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                     {project.techStack.map((tech, i) => (
                       <span 
                         key={i} 
-                        className="text-xs px-3 py-1 bg-dark-200/50 backdrop-blur-sm border border-white/5 rounded-full text-white/60 group-hover:text-white/90 group-hover:border-white/20 transition-all duration-300"
+                        className="text-xs px-3 py-1 bg-slate-100 backdrop-blur-sm border border-slate-200 rounded-full text-slate-600 group-hover:text-slate-800 group-hover:border-slate-300 transition-all duration-300"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                   
-                  <a 
-                    href={project.url} 
-                    className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white group-hover:text-white/90 transition-colors relative mt-auto"
-                  >
-                    <span>View Project</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white/30 group-hover:w-full transition-all duration-300"></span>
-                  </a>
                 </div>
               </GlowCard>
             </motion.div>

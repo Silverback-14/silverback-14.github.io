@@ -33,11 +33,11 @@ const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="py-20 px-4 relative">
       {/* Corner light effect */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-corner-light opacity-30 z-0 animate-light-flash"></div>
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-corner-light-premium opacity-30 z-0 animate-light-flash"></div>
       
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.h2 
-          className="section-heading relative"
+          className="section-heading-premium relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,7 +53,7 @@ const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p className="text-lg mb-6 text-white/80">
+            <p className="text-lg mb-6 text-slate-700">
               Have a project in mind or just want to chat? Feel free to reach out.
             </p>
             
@@ -66,7 +66,7 @@ const ContactSection: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-100/60 border border-dark-200 rounded-md focus-glow transition-all focus:border-white/30"
+                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder-slate-500"
                 />
                 <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
               </div>
@@ -79,7 +79,7 @@ const ContactSection: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-100/60 border border-dark-200 rounded-md focus-glow transition-all focus:border-white/30"
+                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder-slate-500"
                 />
                 <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
               </div>
@@ -92,7 +92,7 @@ const ContactSection: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-100/60 border border-dark-200 rounded-md focus-glow transition-all focus:border-white/30 resize-none"
+                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none text-slate-900 placeholder-slate-500"
                 ></textarea>
                 <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
               </div>
@@ -100,7 +100,7 @@ const ContactSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="cta-button disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cta-button-premium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -116,60 +116,44 @@ const ContactSection: React.FC = () => {
           >
             <div className="glow-card p-8 flex flex-col items-center relative overflow-hidden group">
               {/* Inner highlight effect */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-              <div className="absolute -top-[150px] -right-[150px] w-[300px] h-[300px] bg-white/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+              <div className="absolute -top-[150px] -right-[150px] w-[300px] h-[300px] bg-blue-100/30 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <h3 className="text-xl font-bold italic mb-6">Connect with me</h3>
+              <h3 className="text-xl font-bold italic mb-6 text-slate-800">Connect with me</h3>
               
               <div className="flex space-x-6 mb-6">
                 <a 
-                  href="https://github.com/" 
+                  href="https://github.com/silverback-14" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="p-3 border border-dark-200 rounded-full hover:border-white/40 transition-all hover:scale-110 group"
+                  className="p-3 border border-slate-200 rounded-full hover:border-blue-400 transition-all hover:scale-110 group relative"
                   style={{
-                    boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)'
+                    boxShadow: '0 2px 10px rgba(59, 130, 246, 0.1)'
                   }}
                 >
-                  <Github className="w-5 h-5 group-hover:text-white transition-colors" />
-                  <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 blur-md -z-10 transition-opacity"></div>
-                </a>
-                
+                  <Github className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
+                </a>            
                 <a 
-                  href="https://twitter.com/" 
+                  href="https://linkedin.com/in/ananthram-v" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="p-3 border border-dark-200 rounded-full hover:border-white/40 transition-all hover:scale-110 group"
+                  className="p-3 border border-slate-200 rounded-full hover:border-blue-400 transition-all hover:scale-110 group relative"
                   style={{
-                    boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)'
+                    boxShadow: '0 2px 10px rgba(59, 130, 246, 0.1)'
                   }}
                 >
-                  <Twitter className="w-5 h-5 group-hover:text-white transition-colors" />
-                  <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 blur-md -z-10 transition-opacity"></div>
-                </a>
-                
-                <a 
-                  href="https://linkedin.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 border border-dark-200 rounded-full hover:border-white/40 transition-all hover:scale-110 group"
-                  style={{
-                    boxShadow: '0 0 10px rgba(255, 255, 255, 0.05)'
-                  }}
-                >
-                  <Linkedin className="w-5 h-5 group-hover:text-white transition-colors" />
-                  <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 blur-md -z-10 transition-opacity"></div>
+                  <Linkedin className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
                 </a>
               </div>
               
               <div className="text-center relative z-10">
-                <p className="text-white/70 mb-1">Or email me at:</p>
+                <p className="text-slate-600 mb-1">Or email me at:</p>
                 <a 
-                  href="mailto:john@example.com" 
-                  className="text-white hover:underline hover:text-white/90 transition-colors relative group"
+                  href="mailto:ananthram1411@gmail.com" 
+                  className="text-blue-600 hover:underline hover:text-blue-700 transition-colors relative group"
                 >
-                  john@example.com
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white/50 group-hover:w-full transition-all duration-300"></span>
+                  ananthram1411@gmail.com
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
               </div>
             </div>
