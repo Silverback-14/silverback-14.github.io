@@ -5,15 +5,6 @@ export const ASCII_NAME = ` █████╗ ███╗   ██╗ ██�
 ██║  ██║██║ ╚████║██║  ██║██║ ╚████║   ██║   ██║  ██║
 ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝`;
 
-export const ASCII_COFFEE = `
-       ( (
-        ) )
-      ........
-      |      |]
-      \\      /
-       \`----'
-    ~~~~~~~~~~~`;
-
 export const BOOT_LINES = [
   { text: 'BIOS v2.4.1 — Ananth Systems Inc.', delay: 0 },
   { text: 'Checking memory... 16384 MB OK', delay: 200 },
@@ -25,7 +16,7 @@ export const BOOT_LINES = [
   { text: '[OK] Connected to PostgreSQL cluster', delay: 1600 },
   { text: '[OK] Redis cache warming... done', delay: 1800 },
   { text: '[OK] Kafka streams initialized', delay: 2000 },
-  { text: '[OK] Docker containers healthy (12/12)', delay: 2200 },
+  { text: '[OK] Supabase project linked', delay: 2200 },
   { text: '[OK] AWS services connected', delay: 2400 },
   { text: '', delay: 2600 },
   { text: 'All systems operational. Starting terminal...', delay: 2800 },

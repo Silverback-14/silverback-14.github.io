@@ -15,6 +15,7 @@ export const COMMANDS: CommandDef[] = [
   { name: '/experience', description: 'Work experience timeline', aliases: ['experience', '/exp', 'exp'], category: 'navigation' },
   { name: '/education', description: 'Academic background', aliases: ['education', '/edu', 'edu'], category: 'navigation' },
   { name: '/contact', description: 'Get in touch', aliases: ['contact', '/hire'], category: 'navigation' },
+  { name: '/meet', description: 'Schedule a meeting (Calendly)', aliases: ['meet', '/calendly', 'calendly', '/schedule', 'schedule'], category: 'navigation' },
   { name: '/clear', description: 'Clear the terminal', aliases: ['clear', 'cls'], category: 'system' },
 
   // Quick links

@@ -9,7 +9,7 @@ import {
   LS_OUTPUT, CAT_README_OUTPUT, NEOFETCH_OUTPUT,
   SUDO_HIRE_OUTPUT, COFFEE_OUTPUT, WHOAMI_OUTPUT, SECRETS_OUTPUT,
   PWD_OUTPUT, UPTIME_OUTPUT, PING_OUTPUT, RM_RF_OUTPUT,
-  UNKNOWN_COMMAND,
+  UNKNOWN_COMMAND, CALENDLY_URL,
 } from '../data/content';
 
 export function useTerminal() {
@@ -63,6 +63,7 @@ export function useTerminal() {
       '/linkedin': 'https://linkedin.com/in/ananthram-v',
       '/resume': 'https://drive.google.com/file/d/12sN7Fdeu6_YOY-BFxSTvaguX17myt0JU/view?usp=sharing',
       '/email': 'mailto:ananthram1411@gmail.com',
+      '/meet': CALENDLY_URL,
     };
 
     if (externalLinks[cmdName]) {
