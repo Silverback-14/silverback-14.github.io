@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -10,54 +9,47 @@ interface GlowCardProps {
   intensity?: 'low' | 'medium' | 'high';
 }
 
-const GlowCard: React.FC<GlowCardProps> = ({ 
-  children, 
-  className = '', 
+const GlowCard: React.FC<GlowCardProps> = ({
+  children,
+  className = '',
   hoverScale = 1.02,
   delayIndex = 0,
-  intensity = 'medium'
+  intensity = 'medium',
 }) => {
-  // Define glow intensity levels for light theme
   const glowIntensity = {
     low: {
-      initial: "0 2px 8px rgba(59, 130, 246, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.05)",
-      hover: "0 4px 16px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1)"
+      initial: '0 0 0 1px rgba(255,255,255,0.04)',
+      hover: '0 20px 50px rgba(139, 92, 246, 0.08), 0 0 0 1px rgba(139, 92, 246, 0.15)',
     },
     medium: {
-      initial: "0 4px 12px rgba(59, 130, 246, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.08)",
-      hover: "0 8px 24px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.15)"
+      initial: '0 0 0 1px rgba(255,255,255,0.06)',
+      hover: '0 25px 60px rgba(139, 92, 246, 0.12), 0 0 0 1px rgba(139, 92, 246, 0.2)',
     },
     high: {
-      initial: "0 6px 16px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1)",
-      hover: "0 12px 32px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.2)"
-    }
+      initial: '0 0 0 1px rgba(255,255,255,0.08)',
+      hover: '0 30px 70px rgba(139, 92, 246, 0.15), 0 0 0 1px rgba(139, 92, 246, 0.25)',
+    },
   };
 
   return (
     <motion.div
-      className={`glow-card ${className}`}
-      initial={{ opacity: 0, y: 20 }}
+      className={`glass-card ${className}`}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ 
-        duration: 0.5, 
+      transition={{
+        duration: 0.6,
         delay: delayIndex * 0.1,
-        ease: "easeOut" 
+        ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={{ 
+      whileHover={{
         scale: hoverScale,
         boxShadow: glowIntensity[intensity].hover,
-        borderColor: "rgba(59, 130, 246, 0.3)",
-        transition: { duration: 0.2, ease: "easeOut" }
+        transition: { duration: 0.3, ease: 'easeOut' },
       }}
-      style={{
-        boxShadow: glowIntensity[intensity].initial
-      }}
+      style={{ boxShadow: glowIntensity[intensity].initial }}
     >
-      <div className="relative z-10 h-full">
-        {children}
-      </div>
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+      {children}
     </motion.div>
   );
 };

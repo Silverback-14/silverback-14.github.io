@@ -1,28 +1,19 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Send, ArrowUpRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     setTimeout(() => {
       toast.success('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
@@ -30,131 +21,140 @@ const ContactSection: React.FC = () => {
     }, 1500);
   };
 
+  const socials = [
+    { name: 'GitHub', href: 'https://github.com/silverback-14', icon: Github },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/ananthram-v', icon: Linkedin },
+    { name: 'Email', href: 'mailto:ananthram1411@gmail.com', icon: Mail },
+  ];
+
   return (
-    <section id="contact" className="py-20 px-4 relative">
-      {/* Corner light effect */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-corner-light-premium opacity-30 z-0 animate-light-flash"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h2 
-          className="section-heading-premium relative"
+    <section id="contact" className="py-24 px-6 relative">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=2013&auto=format&fit=crop"
+          alt=""
+          className="w-full h-full object-cover opacity-[0.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/95 to-void/80" />
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
         >
-          Get In Touch
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <span className="section-label">Contact</span>
+          <h2 className="section-title">
+            Let's build something<br />
+            <span className="text-gradient-glow">extraordinary</span><span className="text-white">.</span>
+          </h2>
+          <p className="font-body text-white/40 text-lg max-w-lg mx-auto">
+            Have a project in mind, need an AI that works while you sleep, or just want to chat? I'm all ears.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="md:col-span-3"
           >
-            <p className="text-lg mb-6 text-slate-700">
-              Have a project in mind or just want to chat? Feel free to reach out.
-            </p>
-            
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="relative group">
+              <div>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder="Your name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder-slate-500"
+                  className="input-dark"
                 />
-                <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
               </div>
-              
-              <div className="relative group">
+              <div>
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder="Your email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 placeholder-slate-500"
+                  className="input-dark"
                 />
-                <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
               </div>
-              
-              <div className="relative group">
+              <div>
                 <textarea
                   name="message"
-                  placeholder="Your Message"
+                  placeholder="Tell me about your project..."
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none text-slate-900 placeholder-slate-500"
-                ></textarea>
-                <div className="absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 blur-sm transition-opacity -z-10"></div>
+                  className="input-dark resize-none"
+                />
               </div>
-              
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="cta-button-premium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-glow w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Send className="w-4 h-4" />
+                {isSubmitting ? 'Sending...' : 'Send message'}
               </button>
             </form>
           </motion.div>
-          
+
+          {/* Sidebar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="self-center"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:col-span-2 flex flex-col justify-center"
           >
-            <div className="glow-card p-8 flex flex-col items-center relative overflow-hidden group">
-              {/* Inner highlight effect */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
-              <div className="absolute -top-[150px] -right-[150px] w-[300px] h-[300px] bg-blue-100/30 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <h3 className="text-xl font-bold italic mb-6 text-slate-800">Connect with me</h3>
-              
-              <div className="flex space-x-6 mb-6">
-                <a 
-                  href="https://github.com/silverback-14" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 border border-slate-200 rounded-full hover:border-blue-400 transition-all hover:scale-110 group relative"
-                  style={{
-                    boxShadow: '0 2px 10px rgba(59, 130, 246, 0.1)'
-                  }}
-                >
-                  <Github className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                </a>            
-                <a 
-                  href="https://linkedin.com/in/ananthram-v" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 border border-slate-200 rounded-full hover:border-blue-400 transition-all hover:scale-110 group relative"
-                  style={{
-                    boxShadow: '0 2px 10px rgba(59, 130, 246, 0.1)'
-                  }}
-                >
-                  <Linkedin className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                </a>
+            <div className="glass-card p-7">
+              <h3 className="font-display font-bold text-lg text-white mb-2">Quick connect</h3>
+              <div className="flex items-center gap-1.5 text-white/30 text-xs font-mono mb-3">
+                <MapPin className="w-3 h-3" />
+                Bangalore, India
               </div>
-              
-              <div className="text-center relative z-10">
-                <p className="text-slate-600 mb-1">Or email me at:</p>
-                <a 
-                  href="mailto:ananthram1411@gmail.com" 
-                  className="text-blue-600 hover:underline hover:text-blue-700 transition-colors relative group"
-                >
+              <p className="font-body text-white/30 text-sm mb-6">
+                Response time: usually within 24 hours.
+              </p>
+
+              <div className="space-y-3">
+                {socials.map(({ name, href, icon: Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target={name !== 'Email' ? '_blank' : undefined}
+                    rel={name !== 'Email' ? 'noopener noreferrer' : undefined}
+                    className="flex items-center justify-between p-3 rounded-xl bg-white/3 border border-white/5 hover:border-glow-purple/20 hover:bg-white/5 transition-all duration-300 group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+                        <Icon className="w-4 h-4 text-white/40 group-hover:text-glow-purple transition-colors" />
+                      </div>
+                      <span className="font-body text-sm text-white/60 group-hover:text-white/80 transition-colors">
+                        {name}
+                      </span>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-glow-purple transition-colors" />
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-6 pt-5 border-t border-white/5">
+                <p className="font-mono text-xs text-white/20 text-center">
                   ananthram1411@gmail.com
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-                </a>
+                </p>
               </div>
             </div>
           </motion.div>

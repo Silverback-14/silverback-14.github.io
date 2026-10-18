@@ -1,7 +1,7 @@
-import { Terminal } from './components/terminal/Terminal';
+import Index from './pages/Index';
 
 function App() {
-  return <Terminal />;
+  return <Index />;
 }
 
 export default App;
