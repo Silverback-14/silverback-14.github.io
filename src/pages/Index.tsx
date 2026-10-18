@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
 import TechMarquee from '@/components/TechMarquee';
 import ProjectsSection from '@/components/ProjectsSection';
@@ -9,94 +10,110 @@ import ContactSection from '@/components/ContactSection';
 
 const Index: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="relative min-h-screen bg-void overflow-hidden"
-    >
-      {/* Film grain */}
-      <div className="grain-overlay animate-grain" />
-
-      {/* Ambient orbs */}
-      <div className="orb orb-purple w-[600px] h-[600px] -top-[200px] -left-[200px] animate-float" />
-      <div className="orb orb-blue w-[500px] h-[500px] top-[60vh] -right-[150px] animate-float" style={{ animationDelay: '2s' }} />
-      <div className="orb orb-cyan w-[400px] h-[400px] top-[140vh] -left-[100px] animate-float" style={{ animationDelay: '4s' }} />
-      <div className="orb orb-pink w-[350px] h-[350px] top-[220vh] -right-[100px] animate-float" style={{ animationDelay: '3s' }} />
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="#" className="font-display font-bold text-xl tracking-tight text-white hover:text-glow-purple transition-colors">
-            ananth<span className="text-glow-purple">.</span>
-          </a>
-          <div className="hidden md:flex items-center gap-8">
-            {['Projects', 'Experience', 'Education', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium text-white/50 hover:text-white transition-colors duration-300 tracking-wide"
-              >
-                {item}
-              </a>
-            ))}
-            <a
-              href="https://drive.google.com/file/d/12sN7Fdeu6_YOY-BFxSTvaguX17myt0JU/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-glow text-sm !py-2.5 !px-5"
-            >
-              Resume
-            </a>
-          </div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen relative"
+      >
+        {/* Enhanced premium light source effects */}
+        <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+          {/* Main light source */}
+          <div className="absolute -top-[30vh] -left-[30vh] w-[80vh] h-[80vh] rounded-full bg-radial-glow-premium opacity-60 animate-glow-pulse"></div>
+          
+          {/* Secondary light source */}
+          <div className="absolute top-[70vh] -right-[20vh] w-[50vh] h-[50vh] rounded-full bg-radial-glow-premium opacity-40 animate-glow-pulse" style={{ animationDelay: '2s' }}></div>
+          
+          {/* Premium light rays */}
+          <div className="light-ray-premium" style={{ 
+            top: '15vh', 
+            left: 0, 
+            width: '40vw', 
+            transform: 'rotate(30deg)',
+            opacity: 0.2
+          }}></div>
+          
+          <div className="light-ray-premium" style={{ 
+            top: '35vh', 
+            left: 0, 
+            width: '60vw', 
+            transform: 'rotate(15deg)',
+            opacity: 0.15,
+            animationDelay: '1s'
+          }}></div>
+          
+          <div className="light-ray-premium" style={{ 
+            top: '65vh', 
+            left: 0, 
+            width: '50vw', 
+            transform: 'rotate(-10deg)',
+            opacity: 0.12,
+            animationDelay: '2s'
+          }}></div>
+          
+          {/* Floating glow orbs */}
+          <div className="absolute w-[100px] h-[100px] rounded-full bg-blue-200/30 blur-xl animate-float" style={{ 
+            top: '20vh', 
+            left: '30vw',
+            animationDelay: '0s'
+          }}></div>
+          
+          <div className="absolute w-[80px] h-[80px] rounded-full bg-indigo-200/30 blur-xl animate-float" style={{ 
+            top: '60vh', 
+            right: '25vw',
+            animationDelay: '1.5s'
+          }}></div>
         </div>
-      </nav>
-
-      {/* Main content */}
-      <main>
-        <HeroSection />
-
-        <div className="hr-glow mx-auto max-w-5xl" />
-
-        <TechMarquee />
-
-        <div className="hr-glow mx-auto max-w-5xl" />
-
-        <ProjectsSection />
-
-        <div className="hr-glow mx-auto max-w-5xl" />
-
-        <ExperienceSection />
-
-        <div className="hr-glow mx-auto max-w-5xl" />
-
-        <EducationCard />
-
-        <div className="hr-glow mx-auto max-w-5xl" />
-
-        <ContactSection />
-      </main>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-sm font-body">
-            &copy; {new Date().getFullYear()} Ananthram. Built with caffeine & curiosity.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="https://github.com/silverback-14" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-glow-purple text-sm transition-colors">
-              GitHub
-            </a>
-            <a href="https://linkedin.com/in/ananthram-v" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-glow-purple text-sm transition-colors">
-              LinkedIn
-            </a>
-            <a href="mailto:ananthram1411@gmail.com" className="text-white/30 hover:text-glow-purple text-sm transition-colors">
-              Email
-            </a>
+        
+        <header className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 className="text-xl font-bold italic">Ananth</h1>
+            <nav className="hidden md:block">
+              <ul className="flex space-x-8">
+                <li>
+                  <a href="#projects" className="hover:text-blue-600 transition-colors relative group text-slate-700">
+                    Projects
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="hover:text-blue-600 transition-colors relative group text-slate-700">
+                    Contact
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://drive.google.com/file/d/12sN7Fdeu6_YOY-BFxSTvaguX17myt0JU/view?usp=sharing" 
+                    className="cta-button-premium text-sm px-4 py-1"
+                  >
+                    Resume
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </div>
-      </footer>
-    </motion.div>
+        </header>
+        
+        <main className="pt-16 relative z-10">
+          <HeroSection />
+          <TechMarquee />
+          <ProjectsSection />
+          <EducationCard />
+          <ExperienceSection />
+          <ContactSection />
+        </main>
+        
+        <footer className="py-12 px-4 border-t border-slate-200/50 relative z-10">
+          <div className="max-w-7xl mx-auto text-center">
+            <p className="text-slate-600">
+              © {new Date().getFullYear()} Ananth. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

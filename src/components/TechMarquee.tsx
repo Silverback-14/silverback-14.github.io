@@ -1,49 +1,72 @@
 import React from 'react';
+import { 
+  Github, Code2, Database, 
+  ServerCrash, Container, Cpu, Cloud, Terminal, 
+  Paintbrush, Layers 
+} from 'lucide-react';
 
 const TechMarquee: React.FC = () => {
-  const row1 = [
-    'Python', 'TypeScript', 'JavaScript', 'C++', 'C#', 'SQL', 'Bash',
-    'Sanic', 'Django', 'Node.js', 'Express.js', 'React', 'Next.js',
-    'ASP.NET', '.NET', 'Roslyn',
+  const techStackRow1 = [
+    { name: "React", icon: <Code2 className="w-5 h-5 mr-2" /> },
+    { name: "Next.js", icon: <Code2 className="w-5 h-5 mr-2" /> },
+    { name: "Node.js", icon: <ServerCrash className="w-5 h-5 mr-2" /> },
+    { name: "TailwindCSS", icon: <Paintbrush className="w-5 h-5 mr-2" /> },
+    { name: "PostgreSQL", icon: <Database className="w-5 h-5 mr-2" /> },
+    { name: "MySQL", icon: <Database className="w-5 h-5 mr-2" /> },
+    { name: "MongoDB", icon: <Database className="w-5 h-5 mr-2" /> },
+    { name: "Redis", icon: <Database className="w-5 h-5 mr-2" /> },
+    { name: "Elasticsearch", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "AWS", icon: <Cloud className="w-5 h-5 mr-2" /> },
+    { name: "Docker", icon: <Container className="w-5 h-5 mr-2" /> },
+    { name: "Kubernetes", icon: <Layers className="w-5 h-5 mr-2" /> }
   ];
-
-  const row2 = [
-    'PostgreSQL', 'Redis', 'StarRocks', 'Elasticsearch', 'MongoDB', 'MySQL',
-    'Kafka', 'Flink', 'Airflow', 'Supabase', 'AWS', 'Vercel', 'Firebase',
-    'CLIP', 'BentoML', 'OpenAI API', 'Gemini API', 'Pandas', 'NumPy', 'Linux',
+  
+  const techStackRow2 = [
+    { name: "Python", icon: <Terminal className="w-5 h-5 mr-2" /> },
+    { name: "C#", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "C++", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "SQL", icon: <Database className="w-5 h-5 mr-2" /> },
+    { name: "Bash/Shell", icon: <Terminal className="w-5 h-5 mr-2" /> },
+    { name: "Django", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Sanic", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Express.js", icon: <ServerCrash className="w-5 h-5 mr-2" /> },
+    { name: "Streamlit", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: ".NET Framework", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "ASP.NET", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Flink", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Kafka", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Apache Airflow", icon: <Cpu className="w-5 h-5 mr-2" /> },
+    { name: "Firebase", icon: <Cloud className="w-5 h-5 mr-2" /> },
   ];
+  
 
-  const renderItems = (items: string[]) => {
-    const doubled = [...items, ...items];
-    return doubled.map((tech, i) => (
-      <span key={i} className="tech-badge mx-3">
-        {tech}
+  const renderMarqueeItems = (items: Array<{ name: string; icon: React.ReactNode }>) => {
+    // Duplicate items for seamless scrolling
+    const duplicatedItems = [...items, ...items];
+    return duplicatedItems.map((tech, index) => (
+      <span key={index} className="tech-badge-premium mx-4 flex items-center">
+        {tech.icon}
+        {tech.name}
       </span>
     ));
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Fading edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
-
-      <div className="mb-12 text-center">
-        <span className="section-label">Tech Stack</span>
-        <h2 className="font-display font-bold text-2xl md:text-3xl text-white tracking-tight">Tools of the trade</h2>
-      </div>
-
-      {/* Row 1 — scrolls left */}
-      <div className="relative overflow-hidden mb-4">
-        <div className="flex whitespace-nowrap animate-marquee-left">
-          {renderItems(row1)}
+    <section className="py-20 bg-slate-100/50 relative max-w-screen-xl mx-auto px-10 overflow-hidden">
+      {/* Light effect for tech section */}
+      <div className="absolute w-[400px] h-[400px] rounded-full bg-radial-glow-premium opacity-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+      
+      {/* Top row - scrolling right */}
+      <div className="relative overflow-hidden ">
+        <div className="animate-scroll-right flex whitespace-nowrap py-5">
+          {renderMarqueeItems(techStackRow1)}
         </div>
       </div>
-
-      {/* Row 2 — scrolls right */}
-      <div className="relative overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee-right">
-          {renderItems(row2)}
+      
+      {/* Bottom row - scrolling left */}
+      <div className="relative overflow-hidden mt-10">
+        <div className="animate-scroll-left flex whitespace-nowrap py-5">
+          {renderMarqueeItems(techStackRow2)}
         </div>
       </div>
     </section>

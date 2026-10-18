@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin } from 'lucide-react';
+import GlowCard from './GlowCard';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 interface Experience {
   id: number;
@@ -8,181 +9,158 @@ interface Experience {
   company: string;
   location: string;
   duration: string;
-  tagline: string;
+  description: string;
   techStack: string[];
   companyIcon?: string;
-  achievements: string[];
+  achievements?: string[];
 }
 
 const ExperienceSection: React.FC = () => {
   const experiences: Experience[] = [
     {
-      id: 0,
-      title: 'Deployment Engineer',
-      company: 'Avoca AI (YC W23)',
-      location: 'Remote',
-      duration: 'Oct 2025 — Present',
-      tagline: 'Voice agents that answer every call and book every job.',
-      techStack: ['TypeScript', 'React', 'Next.js', 'Supabase', 'Vercel', 'PostgreSQL', 'LLMs', 'AI Agents'],
-      companyIcon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkYW-u5rCbSp5J5FhKGDSdMGqRLSqq8nPWqA&s',
-      achievements: [
-        'Deployed and integrated AI voice agents for home-service businesses, wiring conversational workflows into CRM, scheduling, booking, and operational systems to support reliable production deployments',
-        'Led enterprise onboarding with 100+ custom business rules, optimizing AI prompts and booking workflows to achieve a 42% raw booking rate and 80.4% lead booking rate for a key enterprise client',
-        'Designed and shipped a booking capacity management system in TypeScript and PostgreSQL — 574 capped booking windows across 45 businesses, 4,278 bookings processed in 30 days, and 375 over-cap bookings prevented',
-        'Improved scheduling accuracy through ZIP code routing, dynamic appointment durations, and customer search, resolving incorrect technician assignments, inaccurate appointment times, and failed customer lookups',
-      ],
-    },
-    {
       id: 1,
-      title: 'Backend Engineer',
-      company: 'Schmooze',
-      location: 'Bengaluru, India',
-      duration: 'May 2025 — Sep 2025',
-      tagline: 'Streaming 200K records before the morning coffee got cold.',
-      techStack: ['Python', 'Sanic', 'Flink', 'Kafka', 'Redis', 'PostgreSQL', 'StarRocks', 'Elasticsearch', 'Firebase', 'AWS', 'CLIP', 'BentoML'],
-      companyIcon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOOgfjaMnRDsPLjE7CiJ8z0VdLWbpNOEvteA&s',
+      title: "Backend Engineer",
+      company: "Schmooze",
+      location: "Bangalore, India",
+      duration: "May 2025 - Present",
+      description: "Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      techStack: ["Python", "Sanic", "Flink", "Kafka", "Redis", "PostgreSQL", "StarRocks", "Elasticsearch", "Firebase", "AWS", "CLIP", "BentoML", "SQL"],
+      companyIcon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOOgfjaMnRDsPLjE7CiJ8z0VdLWbpNOEvteA&s",
       achievements: [
-        'Engineered an end-to-end feature with scalable APIs — Redis for caching, PostgreSQL for persistence, StarRocks for aggregations — plus a Flink job streaming 200,000+ records for real-time analytics',
-        'Built a backend-driven system allotting daily user entitlements tracked in Redis, and deployed a cron job delivering messages to 60,000+ users daily via Kafka producers and consumers',
-        'Implemented a user behavior tracking system for swiping patterns, integrating Firebase for interventions, Redis for fast score retrieval, and Kafka for real-time state — reducing rage swiping by 20%',
-        'Hardened the caching layer against simultaneous Redis key expiry with staggered TTL logic, eliminating 100% CPU usage during peak hours',
-        'Engineered and fine-tuned a CLIP-based multi-stage image classification system at 92% top-1 accuracy, with SQL batch pipelines for metadata, Elasticsearch-indexed embeddings for similarity search, and scalable real-time inference on BentoML',
-      ],
+        "Engineered an end-to-end feature with scalable APIs, leveraging Redis for caching, PostgreSQL for data persistence, and StarRocks for aggregations; devised a Flink job to stream and populate StarRocks with 200,000+ records, ensuring high performance and real-time analytics",
+        "Built a backend-driven feature that allots entitlements to users daily, using Redis to track consumption. Also deployed a cron job delivering messages to 60,000+ users daily, leveraging Kafka producers and consumers",
+        "Implemented a user behavior tracking system for swiping patterns; integrated Firebase for interventions, applied Redis for fast score retrieval, and used Kafka for real-time processing with PostgreSQL for state storage — reducing rage swiping by 20%",
+        "Enhanced caching layer reliability by addressing simultaneous Redis key expiry; introduced staggered TTL logic, eliminating 100% CPU usage during peak hours and ensuring consistent performance",
+        "Engineered and fine-tuned a CLIP-based multi-stage image classification system, achieving 92% top-1 accuracy. Designed SQL batch pipelines for efficient metadata retrieval, indexed embeddings in Elasticsearch for fast similarity search, and deployed scalable real-time inference using BentoML"
+      ]
     },
     {
       id: 2,
-      title: 'Software Developer',
-      company: 'Bharat Petroleum',
-      location: 'Mumbai, India',
-      duration: 'Jun 2024 — Apr 2025',
-      tagline: 'Turning a million rows of crude data into crystal clear dashboards.',
-      techStack: ['Python', 'Dash', 'Streamlit', 'Pandas', 'SQL', 'PostgreSQL', 'REST APIs', 'OCR', 'Generative AI'],
-      companyIcon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIw2u1y_s2KWrxubJCsGglXqYUFZX1rUb_J8ZJV3SjQZpKHZhZDkkA_lC4wNAUQlRNkHU&usqp=CAU',
+      title: "Software Developer",
+      company: "Bharat Petroleum",
+      location: "Mumbai",
+      duration: "June 2024 - April 2025",
+      description: "Building scalable web applications and leading the development of new features. Mentoring junior developers and implementing best practices.",
+      techStack: ["Python", "Pandas", "Dash", "Streamlit", "PostgreSQL", "REST API"],
+      companyIcon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIw2u1y_s2KWrxubJCsGglXqYUFZX1rUb_J8ZJV3SjQZpKHZhZDkkA_lC4wNAUQlRNkHU&usqp=CAU",
       achievements: [
-        'Constructed dashboards for business insights using Pandas and Dash, presented on Streamlit, helping 3+ business units access performance metrics faster',
-        'Implemented a Generative AI-powered Talent Analyzer with OCR to automatically ingest, parse, validate, and summarize candidate documents while ensuring data privacy',
-        'Built Python services with REST API integrations to fetch and process data, and optimized PostgreSQL queries — 30% faster data retrieval across 1M+ records',
-      ],
+        "Constructed dashboards for business insights using Pandas and Dash and presented them on Streamlit, helping 3+ business units access performance metrics faster",
+        "Orchestrated the development of a web app for RO dealers, enabling 2000+ dealers to access stock summaries, product details, and sales trends, while recommending improvements to meet business goals",
+        "Built Python services with REST API integrations to fetch and process data, and optimized PostgreSQL queries, reducing data retrieval time by 30% and supporting 1M+ records for analytics"
+      ]
     },
     {
       id: 3,
-      title: 'Software Developer Intern',
-      company: 'Siemens',
-      location: 'Bengaluru, India',
-      duration: 'Jan 2023 — Jul 2023',
-      tagline: 'Making builds faster, one CodeFix at a time.',
-      techStack: ['C#', '.NET Framework', 'Roslyn', 'ASP.NET'],
-      companyIcon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1NVQt3HQHP1ax44sxuUX5Sean36ypv7bpHw&s',
+      title: "Software Developer Intern",
+      company: "Siemens",
+      location: "Mumbai",
+      duration: "January 2023 - July 2023",
+      description: "Building scalable web applications and leading the development of new features. Mentoring junior developers and implementing best practices.",
+      techStack: ["C#", ".NET Framework", "Roslyn", "ASP.NET", "Visual Studio Code"],
+      companyIcon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1NVQt3HQHP1ax44sxuUX5Sean36ypv7bpHw&s",
       achievements: [
-        'Developed an internal tool for extraction and optimization of project references with version control integration — 5% build time reduction, leading to faster development cycles',
-        'Authored 2 custom CodeFix extensions for Visual Studio Code using code analysis tools, resolving architectural visibility issues and improving code quality',
-      ],
-    },
+        "Developed an internal tool for the extraction and optimization of project references with version control integration. Reduced build times by 5%, leading to faster development cycles and improved overall productivity",
+        "Authored custom CodeFix extensions for Visual Studio Code to enhance code quality. Delivered 2 CodeFixes, resolved architectural visibility issues, and leveraged code analysis tools"
+      ]
+    }
   ];
 
   return (
-    <section id="experience" className="py-24 px-6 relative">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]">
-        <img
-          src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1974&auto=format&fit=crop"
-          alt=""
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        <motion.div
+    <section className="py-20 px-4 relative">
+      {/* Premium lighting effects */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-corner-light-premium opacity-30 z-0"></div>
+      
+      <div className="max-w-6xl mx-auto">
+        <motion.h2 
+          className="section-heading-premium"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.5 }}
         >
-          <span className="section-label">Career</span>
-          <h2 className="section-title">
-            Where I've made<br />an impact<span className="text-glow-purple">.</span>
-          </h2>
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[19px] top-4 bottom-4 w-px bg-gradient-to-b from-glow-purple/30 via-glow-blue/20 to-transparent hidden md:block" />
-
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="relative md:pl-14"
+          Experience
+        </motion.h2>
+        
+        <div className="space-y-8">
+          {experiences.map((experience, index) => (
+            <motion.div
+              key={experience.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <GlowCard 
+                intensity={index % 2 === 0 ? 'high' : 'medium'}
+                className="group h-full"
+                hoverScale={1.02}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-[14px] top-8 w-[11px] h-[11px] rounded-full border-2 border-glow-purple bg-void hidden md:block" />
-
-                <div className="glass-card p-7 group">
-                  {/* Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      {exp.companyIcon && (
-                        <img
-                          src={exp.companyIcon}
-                          alt={`${exp.company} logo`}
-                          className="w-9 h-9 rounded-lg object-contain bg-white/10 p-1"
-                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                      {experience.companyIcon && (
+                        <img 
+                          src={experience.companyIcon} 
+                          alt={`${experience.company} logo`}
+                          className="w-8 h-8 rounded-lg object-contain"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
                         />
                       )}
                       <div>
-                        <h3 className="font-display font-bold text-lg text-white">
-                          {exp.title}
+                        <h3 className="text-2xl font-bold italic text-black leading-tight">
+                          {experience.title}
                         </h3>
-                        <p className="font-body text-glow-purple/80 text-sm font-medium">{exp.company}</p>
+                        <p className="text-slate-700 text-lg">{experience.company}</p>
                       </div>
                     </div>
-                    <div className="flex flex-col items-start sm:items-end gap-1 flex-shrink-0">
-                      <div className="flex items-center gap-1.5 text-white/30 text-xs font-mono">
-                        <Calendar className="w-3 h-3" />
-                        {exp.duration}
+                    <div className="text-right">
+                      <div className="flex items-center gap-2 text-slate-600 mb-1">
+                        <Calendar className="w-4 h-4" />
+                        <span className="text-sm">{experience.duration}</span>
                       </div>
-                      <div className="flex items-center gap-1.5 text-white/30 text-xs font-mono">
-                        <MapPin className="w-3 h-3" />
-                        {exp.location}
+                      <div className="flex items-center gap-2 text-slate-600">
+                        <MapPin className="w-4 h-4" />
+                        <span className="text-sm">{experience.location}</span>
                       </div>
                     </div>
                   </div>
-
-                  {/* Tagline */}
-                  <p className="font-body italic text-white/30 text-sm mb-5">
-                    "{exp.tagline}"
+                  
+                  <p className="text-slate-600 mb-4 group-hover:text-slate-800 transition-colors leading-relaxed">
+                    {experience.description}
                   </p>
-
-                  {/* Achievements */}
-                  <ul className="space-y-2.5 mb-6">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm font-body text-white/50 leading-relaxed">
-                        <span className="w-1 h-1 rounded-full bg-glow-purple/60 mt-2 flex-shrink-0" />
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Tech */}
+                  
+                  {experience.achievements && experience.achievements.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-slate-700 mb-3 group-hover:text-slate-900 transition-colors">
+                        Key Achievements:
+                      </h4>
+                      <ul className="space-y-2">
+                        {experience.achievements.map((achievement, i) => (
+                          <li key={i} className="text-sm text-slate-600 group-hover:text-slate-700 transition-colors leading-relaxed flex items-start">
+                            <span className="text-blue-500 mr-2 mt-1 flex-shrink-0">•</span>
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
                   <div className="flex flex-wrap gap-2">
-                    {exp.techStack.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/4 text-white/35 border border-white/5"
+                    {experience.techStack.map((tech, i) => (
+                      <span 
+                        key={i} 
+                        className="text-xs px-3 py-1 bg-slate-100 backdrop-blur-sm border border-slate-200 rounded-full text-slate-600 group-hover:text-slate-800 group-hover:border-slate-300 transition-all duration-300"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </GlowCard>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
